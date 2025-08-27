@@ -1,3 +1,23 @@
 replicaCount: 1
+
 image:
-  tag: "dev"
+  repository: abhishekyashpal/whatsapp-backend
+  tag: latest
+
+environment: dev
+
+resources:
+  requests:
+    memory: "256Mi"
+    cpu: "250m"
+  limits:
+    memory: "512Mi"
+    cpu: "500m"
+
+ingress:
+  enabled: true
+  hosts:
+    - host: dev.whatsapp-api.yourdomain.com
+      paths:
+        - path: /
+          pathType: Prefix

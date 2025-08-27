@@ -1,21 +1,20 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: whatsapp-backend
+  name: whatsapp-backend-prod
   namespace: argocd
 spec:
   project: default
   source:
     repoURL: https://github.com/abhishekyashpal/whatsapp-backend-gitops.git
-    targetRevision: master   # or main depending on your default branch
+    targetRevision: master
     path: charts/whatsapp-backend
     helm:
       valueFiles:
-        - ../../environments/development/values-dev.yaml
+        - ../values.yaml
+        - ../environments/prod/values-prod.yaml
   destination:
     server: https://kubernetes.default.svc
-    namespace: whatsapp
+    namespace: whatsapp-prod
   syncPolicy:
-    automated:
-      prune: true
-      selfHeal: true
+    automated: {}  # Manual sync for production
