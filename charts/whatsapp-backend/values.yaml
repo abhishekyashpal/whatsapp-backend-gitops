@@ -1,0 +1,12 @@
+replicaCount: 1
+
+image:
+  repository: abhishekyashpal/whatsapp-backend
+  tag: "latest"   # 👈 GitHub Actions will update this automatically
+  pullPolicy: IfNotPresent
+
+service:
+  type: ClusterIP
+  port: 3000
+
+resources: {}

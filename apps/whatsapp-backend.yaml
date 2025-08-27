@@ -1,0 +1,21 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: whatsapp-backend
+  namespace: argocd
+spec:
+  project: default
+  source:
+    repoURL: https://github.com/abhishekyashpal/whatsapp-backend-gitops.git
+    targetRevision: master   # or main depending on your default branch
+    path: charts/whatsapp-backend
+    helm:
+      valueFiles:
+        - ../../environments/development/values-dev.yaml
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: whatsapp
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true

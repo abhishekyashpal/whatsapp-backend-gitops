@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: whatsapp-backend
+spec:
+  replicas: {{ .Values.replicaCount }}
+  selector:
+    matchLabels:
+      app: whatsapp-backend
+  template:
+    metadata:
+      labels:
+        app: whatsapp-backend
+    spec:
+      containers:
+      - name: whatsapp-backend
+        image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
+        ports:
+        - containerPort: 3000
