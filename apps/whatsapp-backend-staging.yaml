@@ -15,7 +15,7 @@ spec:
         - ../environments/staging/values-staging.yaml
   destination:
     server: https://kubernetes.default.svc
-    namespace: whatsapp-staging
+    namespace: whatsapp-backend-staging
   syncPolicy:
     automated:
       prune: true

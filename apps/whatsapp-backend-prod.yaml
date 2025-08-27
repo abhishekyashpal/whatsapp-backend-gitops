@@ -15,6 +15,6 @@ spec:
         - ../environments/prod/values-prod.yaml
   destination:
     server: https://kubernetes.default.svc
-    namespace: whatsapp-prod
+    namespace: whatsapp-backend-prod
   syncPolicy:
     automated: {}  # Manual sync for production

@@ -15,10 +15,21 @@ spec:
         - ../environments/dev/values-dev.yaml
   destination:
     server: https://kubernetes.default.svc
-    namespace: whatsapp-dev
+    namespace: whatsapp-backend-dev
   syncPolicy:
     automated:
       prune: true
       selfHeal: true
     syncOptions:
-      - CreateNamespace=true      
+      - CreateNamespace=true
+    retry:
+      limit: 5
+      backoff:
+        duration: 5s
+        factor: 2
+        maxDuration: 3m   
+  ignoreDifferences:
+    - group: apps
+      kind: Deployment
+      jsonPointers:
+        - /spec/template/spec/containers/0/image          
