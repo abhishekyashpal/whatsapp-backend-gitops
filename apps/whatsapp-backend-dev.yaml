@@ -11,7 +11,7 @@ spec:
     path: charts/whatsapp-backend
     helm:
       valueFiles:
-        - ../values.yaml
+        - ../charts/whatsapp-backend/values.yaml
         - ../environments/dev/values-dev.yaml
   destination:
     server: https://kubernetes.default.svc
