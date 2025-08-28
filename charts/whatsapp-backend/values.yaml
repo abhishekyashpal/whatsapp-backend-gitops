@@ -1,12 +1,11 @@
 replicaCount: 1
 image:
   repository: developerkingabhi/whatsapp-backend
-  tag: "88d9f555ee9214cd47108dea0dd63752beba0389" # 👈 GitHub Actions will update this automatically
+  tag: "f05c4cebc2812cff1d00910013d09137088045ab" # 👈 GitHub Actions will update this automatically
   pullPolicy: IfNotPresent
 service:
   type: ClusterIP
   port: 3000
-
 # Add to your values.yaml for better monitoring
 resources:
   limits:
@@ -15,14 +14,12 @@ resources:
   requests:
     cpu: 250m
     memory: 256Mi
-
 livenessProbe:
   httpGet:
     path: /health
     port: 3000
   initialDelaySeconds: 30
   periodSeconds: 10
-
 readinessProbe:
   httpGet:
     path: /health
